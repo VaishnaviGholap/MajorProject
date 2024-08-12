@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Carousel, Card, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './AgentAbout.css';
 import corosel2 from './corosel2.jpg';
 import AgentNav from '../AgentNav/AgentNav';
 import Footer from '../Footer/Footer';
+import { getToken } from '../../APICallFunction/UserFunction';
+import { useNavigate } from 'react-router-dom';
 
 const AgentAbout = () => {
+    const navigate = useNavigate();
+    useEffect(()=>{
+        tokenCheck();
+    },[])
+    const tokenCheck = ()=>{
+        const token = getToken();
+        if(!token){
+            navigate('/agent');
+        }
+        
+      }
     return (
         <div>
             <AgentNav/>

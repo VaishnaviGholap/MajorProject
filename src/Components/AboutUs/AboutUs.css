@@ -1,30 +1,30 @@
-.about-us {
+.about-us1 {
     padding: 20px;
     background-color: #a0b7d976;
 }
 
-.about-us h1,
-.about-us h2 {
+.about-us1 h1,
+.about-us1 h2 {
     color: #333;
 }
 
-.about-us .mission-vision .card,
-.about-us .values .card,
-.about-us .team-member .card {
+.about-us1 .mission-vision .card,
+.about-us1 .values .card,
+.about-us1 .team-member .card {
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.about-us .team-member img {
+.about-us1 .team-member img {
     height: 200px;
     object-fit: cover;
 }
 
-.about-us .team-member .card-body {
+.about-us1 .team-member .card-body {
     text-align: center;
 }
 
-.about-us .testimonials blockquote {
+.about-us1 .testimonials blockquote {
     font-size: 1.2rem;
     font-style: italic;
     margin: 0 auto;

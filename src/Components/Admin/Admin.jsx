@@ -2,13 +2,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import './Admin.css';
+import { AdminLogin } from '../../APICallFunction/AdminFunction';
+import { Alert, Row } from 'react-bootstrap';
+import { IoArrowBackCircle } from "react-icons/io5";
+import { storeToken } from '../../APICallFunction/UserFunction';
 
 function Admin() {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    rememberMe: false,
-  });
+  const [formData, setFormData] = useState([]);
+  const [erre, setErr] = useState('');
 
   const navigate = useNavigate(); 
 
@@ -20,11 +21,27 @@ function Admin() {
     setFormData({ ...formData, [e.target.name]: e.target.checked });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setErr('')
     console.log(formData);
 
-    navigate('/adminhome');
+    try {
+      const res = await AdminLogin(formData);
+    console.log(res);
+    
+    if(res.status === 200){
+
+      console.log(res.data.token);
+      storeToken(res.data.token);
+      navigate('/adminhome');
+    }
+    
+    
+    } catch (error) {
+      console.log(error);
+      setErr(error.response.data)
+    }
   };
 
  
@@ -38,18 +55,22 @@ function Admin() {
           <input type="text" name="username" onChange={handleChange} required />
           <label>Password:</label>
           <input type="password" name="password" onChange={handleChange} required />
-          <div className="remember-me">
-            <input 
-              type="checkbox" 
-              name="rememberMe" 
-              checked={formData.rememberMe} 
-              onChange={handleCheckboxChange} 
-            />
-            <label htmlFor="rememberMe">Remember Me</label>
-          </div>
+          
+          {
+                            erre.length === 0 ? null :
+                                <Row className="mt-4">
+                                    <Alert variant="danger">{erre} </Alert>
+                                </Row>
+                        }
           <button type="submit">Login</button>
         </form>
       </div>
+      <IoArrowBackCircle style={{color:'white',fontSize:'50px'}}
+          className="back-icon" 
+          onClick={() => navigate("/role-select")} 
+          title="Go Back"
+        />
+    
     </div>
   );
 }

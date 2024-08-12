@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Carousel, Card, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './AboutUs.css';
 import corosel2 from './corosel2.jpg';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import { useNavigate } from 'react-router-dom';
+import { getToken } from '../../APICallFunction/UserFunction';
 
 const AboutUs = () => {
+
+   
+        const navigate = useNavigate();
+        useEffect(()=>{
+          tokenCheck();
+        },[])
+      
+        const tokenCheck = ()=>{
+          const token = getToken();
+          if(!token){
+            navigate('/customer')
+          }
+        }
     return (
         <div>
             <Navbar/>
         <div style={{ backgroundColor: '#a0b7d976' }}>
-            <div className="about-us">
+            <div className="about-us1">
                 <Container>
                     <Carousel>
                         <Carousel.Item>
@@ -25,7 +40,7 @@ const AboutUs = () => {
                         </Carousel.Item>
                     </Carousel>
 
-                    <h1 className="text-center my-5">About Us</h1>
+                    <h1 className="text-center mt-5">About Us</h1>
 
                     <div className="upperbody">
                         <div className="mission-vision mb-5">

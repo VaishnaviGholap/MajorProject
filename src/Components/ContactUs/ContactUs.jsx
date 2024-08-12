@@ -1,19 +1,33 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ContactUs.css';
+import { getToken, PostFeed } from '../../APICallFunction/UserFunction';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ContactUs = () => {
+  const navigate = useNavigate(); 
+    useEffect(()=>{
+      tokenCheck();
+    },[])
+  
+    const tokenCheck = ()=>{
+      const token = getToken();
+      if(!token){
+        navigate('/customer')
+      }
+      
+    }
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    phone: '',
+    category: '',
     query: ''
   });
 
   const [errors, setErrors] = useState({
     username: '',
     email: '',
-    phone: '',
+    category: '',
     query: ''
   });
 
@@ -37,8 +51,8 @@ const ContactUs = () => {
       newErrors.email = 'Email is required';
       valid = false;
     }
-    if (!formData.phone) {
-      newErrors.phone = 'Phone is required';
+    if (!formData.category) {
+      newErrors.category = 'Phone is required';
       valid = false;
     }
     if (!formData.query) {
@@ -50,11 +64,20 @@ const ContactUs = () => {
     return valid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (validateForm()) {
       console.log('Form submitted successfully', formData);
+    }
+    try {
+      const res= await PostFeed(formData)
+      console.log(res.data);
+      if(res.status===200){
+        navigate('/customer-home')
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -86,17 +109,27 @@ const ContactUs = () => {
             />
             <span className='text-danger'>{errors.email}</span>
           </div>
+          
+
           <div className='form-group'>
-            <label htmlFor='phone' className='control-label' style={{fontSize:'20px'}}>Phone :</label>
-            <input
-              id='phone'
-              name='phone'
-              value={formData.phone}
-              onChange={handleChange}
-              className='form-control'
-            />
-            <span className='text-danger'>{errors.phone}</span>
-          </div>
+      <label htmlFor='query' className='control-label' style={{ fontSize: '20px' }}>
+        Category :
+      </label>
+      <select
+        id='category'
+        name='category'
+        value={formData.category}
+        onChange={handleChange}
+        className='form-control'
+      >
+        <option value='' disabled>Select an option</option>
+        <option value='Order'>Order</option>
+        <option value='Feedback'>Feedback</option>
+        <option value='General'>General</option>
+      </select>
+      <span className='text-danger'>{errors.query}</span>
+    </div>
+
           <div className='form-group'>
             <label htmlFor='query' className='control-label' style={{fontSize:'20px'}}>Query :</label>
             <input
@@ -116,7 +149,8 @@ const ContactUs = () => {
               className='btn btn-primary btn-block'
             />
             <div className='backus'>
-              <a href="/customer-home" className="btn btn-success ml-2" style={{fontSize:'20px'}}>Back to Home</a>
+              
+              <Link to="/customer-home" className="btn btn-success ml-2" style={{fontSize:'20px'}}>Back to Home</Link>
             </div>
           </div>
         </form>

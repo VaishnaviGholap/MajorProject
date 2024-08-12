@@ -8,8 +8,8 @@
     min-height: 100vh; 
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-image: url("G:/Project/project/public/Images/customer.png"); 
+     align-items: center; 
+    background-image: url("D:\finalProject\MajorProject\public\Images\customer.png"); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;

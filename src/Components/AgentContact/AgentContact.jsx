@@ -1,7 +1,23 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './AgentContact.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { getToken } from '../../APICallFunction/UserFunction';
 
 const AgentContact = () => {
+
+ 
+    const navigate = useNavigate();
+    useEffect(()=>{
+      tokenCheck();
+    },[])
+  
+    const tokenCheck = ()=>{
+      const token = getToken();
+      if(!token)
+     {
+      navigate('/agent');
+     }
+    }
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -66,6 +82,7 @@ const AgentContact = () => {
         query: ''
       });
       setErrors({});
+      navigate('/agenthome')
     }
   };
 
@@ -127,7 +144,8 @@ const AgentContact = () => {
               className='btn btn-primary btn-block'
             />
             <div className='backus'>
-              <a href="/Agenthome" className="btn btn-success ml-2">Back to Home</a>
+             
+              <Link to="/Agenthome" className="btn btn-success ml-2" style={{fontSize:'20px'}}>Back to Home</Link>
             </div>
           </div>
         </form>

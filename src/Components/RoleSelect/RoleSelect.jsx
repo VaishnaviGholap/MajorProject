@@ -21,7 +21,7 @@ function RoleSelect() {
         </div>
         <IoArrowBackCircle style={{color:'white',fontSize:'50px'}}
           className="back-icon" 
-          onClick={() => navigate(-1)} 
+          onClick={() => navigate('/')} 
           title="Go Back"
         />
       </div>

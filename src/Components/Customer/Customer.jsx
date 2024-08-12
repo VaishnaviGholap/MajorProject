@@ -1,21 +1,15 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Customer.css'; 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoArrowBackCircle } from "react-icons/io5";
-import { UserLogin } from '../../APICallFunction/UserFunction';
+import { storeToken, UserLogin, UserSignUp } from '../../APICallFunction/UserFunction';
+import { Alert, Row } from 'react-bootstrap';
 
 function Customer() {
   const [isLogin, setIsLogin] = useState(true);
   const [erre, setErr] = useState('');
-  const [formData, setFormData] = useState({
-    // name: '',
-    username: '',
-    // email: '',
-    password: '',
-    // phone: '',
-    // rememberMe: false,
-  });
+  const [formData, setFormData] = useState([]);
 
  
   const navigate = useNavigate();
@@ -28,31 +22,43 @@ function Customer() {
     setFormData({ ...formData, [e.target.name]: e.target.checked });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(formData);
-
-  //   navigate('/customer-home');
-  // };
-
   const handleSubmit = async (e) => {
     try {
         e.preventDefault();
-        console.log(formData);
-        const res = await UserLogin(formData);
+        console.log(formData); 
+        if(isLogin){
+        const res = await UserLogin(formData); 
         console.log(res);
+             
+        const val = res.data.user[0].customerId;
+        const tkn = res.data.token;
         if (res.status === 200) {
             //res.data.msg
             setErr('');
-            //storeToken(res.data.token);
+            storeToken(tkn);
+            sessionStorage.setItem('csID', val);
             navigate('/customer-home');
         }
+
+      }else{
+        const res = await UserSignUp(formData);
+        if (res.status === 200) {
+          //res.data.msg
+          console.log("success");
+          
+          setErr('');
+          navigate(0);
+      }
+      }
+
     } catch (error) {
-        console.log(error);
-        if (error.response.status === 400) {
-            setErr(error.response.data.msg);
-        }
+       console.log(error);
+        
+            setErr(error.response.data);
+            console.log(error.response.data);
+        
     }
+  
 }
  
  
@@ -68,7 +74,9 @@ function Customer() {
               <label>Email:</label>
               <input type="email" name="email" onChange={handleChange} required />
               <label>Phone:</label>
-              <input type="tel" name="phone" onChange={handleChange} required />
+              <input type="tel" name="phoneNumber" onChange={handleChange} required />
+              <label>Address:</label>
+              <input type="text" name="address" onChange={handleChange} required />
             </>
           )}
           <label>Username:</label>
@@ -77,24 +85,24 @@ function Customer() {
           <input type="password"  name="password" onChange={handleChange} required />
           {isLogin && (
             <div className="remember-me">
-              <input 
-                type="checkbox" 
-                name="rememberMe" 
-                checked={formData.rememberMe} 
-                onChange={handleCheckboxChange} 
-              />
-              <label htmlFor="rememberMe">Remember Me</label>
+              <Link to="/forgetUser">Forget Password</Link>
             </div>
           )}
           <button type="submit">{isLogin ? 'Login' : 'Signup'}</button>
         </form>
+        {
+                            erre.length === 0 ? null :
+                                <Row className="mt-4">
+                                    <Alert variant="danger">{erre} </Alert>
+                                </Row>
+                        }
         <button onClick={() => setIsLogin(!isLogin)}>
           {isLogin ? 'Signup' : 'Login'}
         </button>
       </div>
         <IoArrowBackCircle style={{color:'white',fontSize:'50px'}}
           className="back-icon" 
-          onClick={() => navigate(-1)} 
+          onClick={() => navigate("/role-select")} 
           title="Go Back"
         />
     </div>

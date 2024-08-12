@@ -45,6 +45,12 @@
     font-weight: bold;
     margin-bottom: 10px;
   }
+
+  .agentDetailsTitle1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
   
   .agentDetailsText {
     font-size: 1.5rem;
@@ -53,6 +59,6 @@
   
   .btn {
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
   }
   

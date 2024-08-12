@@ -1,10 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./AgentNav.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { removeToken } from '../../APICallFunction/UserFunction';
+import { Button } from 'react-bootstrap';
 
 
 const AgentNav = () => {
+  const nevigate = useNavigate();
+  const clickHandle = ()=>{
+    
+    removeToken('token');
+    nevigate("/agent");
+}
     return (
       <div>
         <nav className="Agent-navbar">
@@ -25,9 +33,7 @@ const AgentNav = () => {
             <li><Link to="/agentabout">About Us</Link></li> 
 
     </div>
-    <div className='logout'>
-          <Link to="/role-select">LogOut</Link>
-    </div>
+    <Button className="btn btn-primary" onClick={clickHandle}>Log Out</Button>
         </nav>
       </div>
     );

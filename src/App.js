@@ -25,6 +25,18 @@ import GetOrders from './Components/GetOrders/GetOrder';
 import GetQueries from './Components/GetQueries/GetQueries';
 import GetUsers from './Components/GetUsers/GetUsers';
 import AgentOrders from './Components/AgentOrders/AgentOrders';
+import GetAgents from './Components/GetAgents/GetAgents';
+import Details from './Components/TrackDetails/Details';
+import ViewOrder from './Components/ViewOrder/ViewOrder';
+import AgentProfile from './Components/Profiles/AgentProfile';
+import CustomerProfile from './Components/Profiles/CustomerProfile';
+import UserForm from './Components/UpdateForm/UserForm';
+import OrderForm from './Components/UpdateForm/OrderForm';
+import ForgetUser from './Components/ForgetPassword/ForgetUser';
+import UserOtp from './Components/OTP/UserOTP';
+import ForgetAgent from './Components/ForgetPassword/ForgetAgent';
+import AgentOtp from './Components/OTP/AgentOtp';
+import Payment from './Components/Payment/Payment';
 
 
 
@@ -41,7 +53,7 @@ function App() {
       <Route path="/customer-home" element={<CustomerHome />} /> 
       <Route path="/navbar" element={<Navbar/>} /> 
       <Route path="/footer" element={<Footer/>} /> 
-      <Route path="/order" element={<Order />} />
+      <Route path="/order/:from/:to" element={<Order />} />
       <Route path="/track-order" element={<TrackOrder />} /> 
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/about-us" element={<AboutUs />} />  
@@ -55,6 +67,18 @@ function App() {
       <Route path="/getqueries" element={<GetQueries />} />
       <Route path="/getusers" element={<GetUsers />} />
       <Route path="/agentorders" element={<AgentOrders />} />
+      <Route path="/getagents" element={<GetAgents />} />
+      <Route path="/tarckdetails/:trk" element={<Details />} />
+      <Route path="/view" element={<ViewOrder />} />
+      <Route path="/agentProfile/:agId" element={<AgentProfile />} />
+      <Route path="/customersProfile/:agId" element={<CustomerProfile />} />
+      <Route path="/userUpdate/:id" element={<UserForm />} />
+      <Route path="/orderUpdate/:id" element={<OrderForm />} />
+      <Route path="/forgetUser" element={<ForgetUser />} />
+      <Route path="/otpUser" element={<UserOtp />} />
+      <Route path="/forgetAgent" element={<ForgetAgent />} />
+      <Route path="/otpAgent" element={<AgentOtp />} />
+      <Route path="/payment" element={<Payment />} />
 
 
 

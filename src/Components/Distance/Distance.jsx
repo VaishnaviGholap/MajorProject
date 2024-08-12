@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Distance.css';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import { GetAgent } from '../../APICallFunction/AgentFunction';
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { getToken } from '../../APICallFunction/UserFunction';
 
 const Distance = () => {
   const [map, setMap] = useState(null);
@@ -14,6 +18,9 @@ const Distance = () => {
   const [output, setOutput] = useState('');
   const [showOrderButton, setShowOrderButton] = useState(false); // New state to control order button visibility
 
+  const [agentsData, setAgents] = useState([]);
+  const navigate = useNavigate();
+  const [distance, setDistance] = useState();
   useEffect(() => {
     const loadGoogleMaps = () => {
       const script = document.createElement('script');
@@ -22,9 +29,23 @@ const Distance = () => {
       script.onload = () => initializeMap();
       document.body.appendChild(script);
     };
-
+    tokenCheck();
     loadGoogleMaps();
+
   }, []);
+
+  
+   
+    
+  
+    const tokenCheck = ()=>{
+      const token = getToken();
+      if(!token){
+        console.log("123");
+        //navigate('/')
+        
+      }
+    }
 
   const initializeMap = () => {
     if (!window.google) return;
@@ -69,9 +90,21 @@ const Distance = () => {
     });
   };
 
+  const getAllAgents = async() => {
+    try {
+      const res = await GetAgent();
+    console.log(res);
+    setAgents(res.data);
+    } catch (error) {
+      console.error('Failed to fetch agents:', error);
+      navigate('/customer');
+    }
+  }
+
   const calcRoute = () => {
     if (!directionsService || !directionsRenderer) return;
 
+    
     const request = {
       origin: from,
       destination: to,
@@ -81,9 +114,12 @@ const Distance = () => {
 
     directionsService.route(request, (result, status) => {
       if (status === window.google.maps.DirectionsStatus.OK) {
+        setDistance(result.routes[0].legs[0].distance.value);
         setOutput(
           `<div class='alert-info'>From: ${from}.<br />To: ${to}.<br /> Driving distance <i class='fas fa-road'></i> : ${result.routes[0].legs[0].distance.text}.<br />Duration <i class='fas fa-hourglass-start'></i> : ${result.routes[0].legs[0].duration.text}.</div>`
+          
         );
+        getAllAgents();
         directionsRenderer.setDirections(result);
         setShowOrderButton(true); // Show the "Place Order" button after successful route calculation
       } else {
@@ -92,6 +128,9 @@ const Distance = () => {
         setOutput(
           "<div class='alert-danger'><i class='fas fa-exclamation-triangle'></i> Could not Retrieve</div>"
         );
+        // Save data to sessionStorage
+        
+
         setShowOrderButton(false); // Hide the "Place Order" button if route calculation fails
       }
     });
@@ -143,7 +182,7 @@ const Distance = () => {
           {showOrderButton && (
             <div className="order-section">
               <br></br>
-              <a href='/order' className="btn btn-primary btn-lg">Place Order</a>
+              
             </div>
           )}
         </div>
@@ -153,6 +192,36 @@ const Distance = () => {
         </div>
       </div>
       <br></br>
+      <div className="container mt-4">
+      <div className="row">
+        
+        {agentsData.map((item, index) => {
+        // Calculate the image index using modulo to reset after 5
+        const imageIndex = (index % 10) + 1; // Assuming image files are named 1.jpg, 2.jpg, ..., 5.jpg
+        const inr = (distance/5000 * imageIndex).toFixed(2)
+        return (
+          <div className="col-md-4 mb-4" key={item.agentId}>
+            <div className="card" style={{ width: '20rem' }}>
+              <img className="card-img-top" src={`/Images/${imageIndex}.jpg`} alt="Card" />
+              <div className="card-body1">
+                <h5 className="card-title">Company: {item.companyName}</h5>
+                <p className="card-text">Address: {item.address}</p>
+                <p className="card-text">Ratings: {item.ratings}/5</p>
+                <p className="card-text">Call: {item.phoneNumber}</p>
+               
+                <Button variant='primary' style={{ marginBottom:'10px' }} onClick={()=>{
+                  sessionStorage.setItem('inr', inr);
+                  sessionStorage.setItem('agID', item.agentId);
+                                            navigate(`/order/${from}/${to}`);
+                                        }}>Price : ₹{inr}</Button>
+                
+              </div>
+            </div>
+          </div>
+        );
+      })}
+      </div>
+    </div>
       <Footer />
     </div>
   );

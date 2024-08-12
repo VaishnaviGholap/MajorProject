@@ -1,18 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './TrackOrder.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { getToken } from '../../APICallFunction/UserFunction';
 
 const TrackCourierForm = () => {
     const [trk, setTrk] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+
+   
+        useEffect(()=>{
+            tokenCheck();
+        },[])
+      
+        const tokenCheck = ()=>{
+          const token = getToken();
+          if(!token){
+            navigate('/customer')
+          }
+        }
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (trk === '') {
             setError('Tracking number is required');
+            
+
         } else {
             setError('');
             // Handle form submission
             console.log('Tracking number:', trk);
+            navigate(`/tarckdetails/${trk}`);
         }
     };
 
@@ -37,7 +55,8 @@ const TrackCourierForm = () => {
                         <input type="submit" value="Track" className="btn btn-primary" />
                     </div>
                     <div className='backbtn'>
-                    <a href="/customer-home" className="btn btn-success ml-2">Back to Home</a>
+                    
+                    <Link to="/customer-home" className="btn btn-success ml-2">Back to Home</Link>
                     </div>
                 </form>
             </div>

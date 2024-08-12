@@ -1,22 +1,47 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Order.css';
 import { IoArrowBackCircle } from "react-icons/io5";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import {getToken, OrderPlace} from '../../APICallFunction/UserFunction';
+import { Toast, ToastContainer } from "react-bootstrap";
+
 
 
 const Order = () => {
-
+    const { from, to } = useParams();
+    const csID = sessionStorage.getItem('csID');
+    const agID = sessionStorage.getItem('agID');
     const navigate = useNavigate();
-
+    const [msg, setMsg] = useState("");
+    const [toastShow, setToastShow] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        phone: '',
-        pickup: '',
-        destination: ''
+        phoneNumber: '',
+        pickup: from,
+        destination: to,
+        customerId : csID,
+        agentId : agID
     });
+    
+       
+        useEffect(()=>{
+          tokenCheck();
+        },[])
+      
+        const tokenCheck = ()=>{
+          const token = getToken();
+          if(!token){
+            navigate('/agent')
+          }
+        }
 
+    const handleCloseToast=()=>{
+        setToastShow(false);
+        navigate('/payment')
+
+    }
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -25,15 +50,31 @@ const Order = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // Handle form submission logic
         console.log('Form data submitted:', formData);
+        try {
+            const res = await OrderPlace(formData);
+            console.log(res);
+            if(res.status === 200){
+                
+                setToastShow(true);
+            }
+        } catch (error) {
+            console.log(error);
+            setMsg("Server Error Try Again After Sometime..");
+        }
     };
 
     return (
         <div className='background'>
+            
+                            
+                           
+                        
         <div className="order-container containerOr">
+        
             <h2 style={{fontSize:'40px'}} className="text-center">Place Order</h2>
             <br></br>
             <form onSubmit={handleSubmit} className="order-form">
@@ -64,7 +105,7 @@ const Order = () => {
                     <input
                         type="text"
                         id="phone"
-                        name="phone"
+                        name="phoneNumber"
                         value={formData.phone}
                         onChange={handleChange}
                         className="form-control"
@@ -76,9 +117,10 @@ const Order = () => {
                         type="text"
                         id="pickup"
                         name="pickup"
-                        value={formData.pickup}
+                        value={from}
                         onChange={handleChange}
                         className="form-control"
+                        readOnly
                     />
                 </div>
                 <div className="form-group">
@@ -87,9 +129,10 @@ const Order = () => {
                         type="text"
                         id="destination"
                         name="destination"
-                        value={formData.destination}
+                        value={to}
                         onChange={handleChange}
                         className="form-control"
+                        readOnly
                     />
                 </div>
                 <div className="form-group">
@@ -103,6 +146,16 @@ const Order = () => {
           onClick={() => navigate(-1)} 
           title="Go Back"
         />
+         <ToastContainer position="top-end">
+                <Toast bg="success" onClose={handleCloseToast} show={toastShow} delay={3000} autohide>
+                    <Toast.Header >
+                       
+                        <strong className="me-auto">Confirmation</strong>
+                        
+                    </Toast.Header>
+                    <Toast.Body className="text-white">Order Placed</Toast.Body>
+                </Toast>
+            </ToastContainer>
         </div>
     );
 };

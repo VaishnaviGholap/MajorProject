@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './AdminHome.css';
 import AdminNav from '../AdminNav/AdminNav';
 import Footer from '../Footer/Footer';
+import { Link, useNavigate } from 'react-router-dom';
+import { getToken } from '../../APICallFunction/UserFunction';
 
 const AdminHome = () => {
+  const navigate = useNavigate();
+  useEffect(()=>{
+    tokenCheck();
+  },[])
+
+  const tkn = getToken();
+   
+  const tokenCheck = ()=>{
+    console.log(tkn);
+    
+   if(!tkn){
+    navigate('/admin')
+   }
+    
+    
+  }
   return (
     <div>
       <AdminNav/>
@@ -18,17 +36,20 @@ const AdminHome = () => {
         <div className="admin-section">
           <h2>Check Users</h2>
           <p>View and manage registered users.</p>
-          <a href="/getusers" className="btn btn-primary">Go to Users</a>
+          <Link to="/getusers" className="btn btn-primary">Go to Users</Link>
+          
         </div>
         <div className="admin-section">
           <h2>Check Orders</h2>
           <p>View and manage customer orders.</p>
-          <a href="/getorders" className="btn btn-primary">Go to Orders</a>
+          <Link to="/getorders" className="btn btn-primary">Go to Orders</Link>
+          
         </div>
         <div className="admin-section">
           <h2>Check Queries</h2>
           <p>View and respond to customer queries.</p>
-          <a href="/getqueries" className="btn btn-primary">Go to Queries</a>
+          <Link to="/getqueries" className="btn btn-primary">Go to Queries</Link>
+          
         </div>
       </div>
     </div>

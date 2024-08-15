@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './TrackOrder.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,55 +9,50 @@ const TrackCourierForm = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-   
-        useEffect(()=>{
-            tokenCheck();
-        },[])
-      
-        const tokenCheck = ()=>{
-          const token = getToken();
-          if(!token){
-            navigate('/customer')
-          }
-        }
+    // useEffect(() => {
+    //     tokenCheck();
+    // }, []);
+
+    // const tokenCheck = () => {
+    //     const token = getToken();
+    //     if (!token) {
+    //         navigate('/customer');
+    //     }
+    // };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (trk === '') {
             setError('Tracking number is required');
-            
-
         } else {
             setError('');
-            // Handle form submission
+         
             console.log('Tracking number:', trk);
             navigate(`/tarckdetails/${trk}`);
         }
     };
 
     return (
-        <div className="center-form">
-            <div className="form-container">
+        <div className="track-courier-center-form">
+            <div className="track-courier-form-container">
                 <h2 className="track-courier-heading">Track Your Courier</h2>
-                <hr className="heading-line" />
+                <hr className="track-courier-heading-line" />
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="trk" className="control-label" style={{fontSize:'18px'}}>Tracking Number</label>
+                    <div className="track-courier-form-group">
+                        <label htmlFor="trk" className="track-courier-control-label" style={{fontSize:'25px'}}>Tracking Number :</label>
                         <input 
                             type="text"
                             id="trk"
-                            className="form-control"
+                            className="track-courier-input-control"
                             value={trk}
                             onChange={(e) => setTrk(e.target.value)}
+                             placeholder="Enter your tracking ID"
                         />
-                        {error && <span className="text-danger">{error}</span>}
+                        {error && <span className="track-courier-text-danger">{error}</span>}
                     </div>
-                    <div className="form-group">
-                        <input type="submit" value="Track" className="btn btn-primary" />
-                    </div>
-                    <div className='backbtn'>
-                    
-                    <Link to="/customer-home" className="btn btn-success ml-2">Back to Home</Link>
+                    <div className="track-courier-form-group">
+                        <input type="submit" value="Track" className="track-courier-btn-primary" />
+                        <Link to="/customer-home" className="track-courier-btn-success">Back to Home</Link>
                     </div>
                 </form>
             </div>
@@ -65,3 +61,4 @@ const TrackCourierForm = () => {
 };
 
 export default TrackCourierForm;
+

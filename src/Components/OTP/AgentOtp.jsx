@@ -28,14 +28,13 @@ const AgentOtp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Join the OTP array into a single string
+   
     const otpCode = otp.join('');
     
-    // For now, let's just log the OTP
+   
     console.log('OTP Submitted:', otp);
     const otpPayload = { otp: otpCode };
-    // Here you would typically make an API call to verify the OTP
-    // Example:
+    
     try {
       const response = await AgentOtp1(username,otpPayload);
       console.log(response);
@@ -46,7 +45,7 @@ const AgentOtp = () => {
         setMsg(response.data.msg);
         setShow(true);
        
-      // navigate('/customer')
+    
       } else {
         setError('Invalid OTP');
       }
@@ -101,7 +100,7 @@ const AgentOtp = () => {
     <div
       className='back'
       style={{
-        backgroundImage: 'url(/Images/form.jpg)', // Adjust the path to your image
+        backgroundImage: 'url(/Images/form.jpg)', 
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

@@ -48,7 +48,7 @@ const OrderForm = () => {
   return (
     <div className='main'>
       <div className="form-container">
-        <h2>My Form</h2><br></br>
+        <h2>Update Order</h2><br></br>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="id">Order ID:</label>
@@ -62,7 +62,6 @@ const OrderForm = () => {
             />
           </div>
           <div className="form-group">
-            
             <input
               type="text"
               id="agentId"
@@ -169,12 +168,12 @@ const OrderForm = () => {
               name="trackingID"
               value={formData.trackingID}
               onChange={handleChange}
-              required
+              readOnly
             />
           </div>
           <div className="button-group">
-            <button type="submit" style={{height:'40px'}}>Submit</button>
-            <a href="/customer-home" className="btn btn-success" >Back</a>
+            <button type="submit" >Submit</button>
+            <a href="/getorders" className="btn btn-success" style={{marginLeft:'85%'}}>Back</a>
           </div>
         </form>
       </div>

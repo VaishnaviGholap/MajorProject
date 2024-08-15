@@ -6,7 +6,7 @@
   justify-content: center;
   height: 100vh;
   background-color: #f4f4f4;
-  background-image: url("D:\finalProject\MajorProject\public\Images\display.jpg"); 
+  background-image: url("/public/Images/display.jpg"); 
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat;
@@ -50,7 +50,6 @@ h1 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
    width: 100%;
    position: relative; 
-
   }
 
   .scroll p{
@@ -58,7 +57,7 @@ h1 {
    padding-top: 20px;
   }
 
-/* Position the back icon at the bottom left corner */
+
 .back-icon {
   position: fixed;
   bottom: 20px;
@@ -71,6 +70,34 @@ h1 {
 
 .back-icon:hover {
   transform: scale(1.1);
+}
+
+
+.scroll {
+  /* Existing styles */
+}
+
+.marquee {
+  /* Existing styles */
+}
+
+.role-selection {
+  /* Existing styles */
+  text-align: center;
+}
+
+.button-container {
+  /* Existing styles */
+}
+
+.navigation-icons {
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.track-icon, .back-icon {
+  cursor: pointer;
 }
 
 

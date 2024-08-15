@@ -1,44 +1,43 @@
-/* Footer.css */
 
 .footer {
-    background-color: #bac7d4; /* Light grey background color */
+    background-color: #bac7d4; 
     padding: 40px 0;
-    border-top: 1px solid #e9ecef; /* Subtle border on top */
-    text-align: left; /* Ensure text alignment is left by default */
+    border-top: 1px solid #e9ecef; 
+    text-align: left; 
   }
   
   .footer h6 {
-    color: #343a40; /* Dark grey color for headings */
+    color: #343a40; 
     margin-bottom: 1rem;
-    font-size: 1.25rem; /* Increase the size of the headings */
-    font-weight: bold; /* Make the headings bold */
+    font-size: 1.25rem; 
+    font-weight: bold; 
   }
   
   .footer p {
-    color: black; /* Medium grey color for paragraph text */
-    font-size: 1rem; /* Adjust the font size */
+    color: black;
+    font-size: 1rem; 
   }
   
   .footer ul {
-    padding-left: 0; /* Remove padding to align list items with text */
-    list-style-type: none; /* Remove bullets from the list items */
-    margin: 0; /* Remove default margin */
+    padding-left: 0; 
+    list-style-type: none; 
+    margin: 0; 
   }
   
   .footer ul li {
-    margin-bottom: 0.5rem; /* Reduce the margin between list items */
-    font-size: 1rem; /* Adjust the font size */
+    margin-bottom: 0.5rem; 
+    font-size: 1rem; 
   }
   
   .footer a {
-    color: #007bff; /* Bootstrap blue color */
+    color: #007bff; 
     text-decoration: none;
-    font-weight: normal; /* Normal font weight for links */
+    font-weight: normal; 
   }
   
   .footer a:hover {
     text-decoration: underline;
-    color: #0056b3; /* Darker blue color on hover for better visibility */
+    color: #0056b3; 
   }
   
   #txt, #link {
@@ -51,9 +50,9 @@
   }
   
   .footer .container img {
-    margin: 0 10px; /* Space out the GIF icons */
-    width: 40px; /* Set the width of the icons */
-    height: 40px; /* Set the height of the icons */
+    margin: 0 10px; 
+    width: 40px;
+    height: 40px; 
   }
   
   @media (max-width: 767.98px) {
@@ -62,13 +61,13 @@
     }
     
     .footer .container img {
-      margin: 10px auto; /* Center GIFs on small screens */
-      width: 35px; /* Adjust width of icons on smaller screens */
-      height: 35px; /* Adjust height of icons on smaller screens */
+      margin: 10px auto; 
+      width: 35px; 
+      height: 35px;
     }
   
     .footer ul {
-      padding-left: 0; /* Ensure no extra padding on small screens */
+      padding-left: 0; 
     }
   }
   

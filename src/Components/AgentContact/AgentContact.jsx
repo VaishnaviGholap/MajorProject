@@ -71,10 +71,9 @@ const AgentContact = () => {
     e.preventDefault();
     
     if (validateForm()) {
-      // Handle form submission logic here
+     
       console.log('Form submitted successfully with data:', formData);
       alert('Form submitted successfully!');
-      // Reset form
       setFormData({
         username: '',
         email: '',
@@ -89,10 +88,10 @@ const AgentContact = () => {
   return (
     <div className='cover'>
       <div className='submit-form-container'>
-        <h3 className='submit-form-heading'>Submit Your Query/Feedback</h3>
+        <h3 className='submit-form-heading'  style={{fontSize:'35px'}}>Submit Your Query/Feedback</h3>
         <form ref={form} onSubmit={handleSubmit}>
           <div className='form-group'>
-            <label htmlFor='username' className='control-label'>Username</label>
+            <label htmlFor='username' className='control-label'  style={{fontSize:'20px'}}>Username :</label>
             <input
               id='username'
               name='username'
@@ -103,7 +102,7 @@ const AgentContact = () => {
             <span className='text-danger'>{errors.username}</span>
           </div>
           <div className='form-group'>
-            <label htmlFor='email' className='control-label'>Email</label>
+            <label htmlFor='email' className='control-label'  style={{fontSize:'20px'}}>Email :</label>
             <input
               id='email'
               name='email'
@@ -115,7 +114,7 @@ const AgentContact = () => {
             <span className='text-danger'>{errors.email}</span>
           </div>
           <div className='form-group'>
-            <label htmlFor='phone' className='control-label'>Phone</label>
+            <label htmlFor='phone' className='control-label'  style={{fontSize:'20px'}}>Phone :</label>
             <input
               id='phone'
               name='phone'
@@ -126,7 +125,7 @@ const AgentContact = () => {
             <span className='text-danger'>{errors.phone}</span>
           </div>
           <div className='form-group'>
-            <label htmlFor='query' className='control-label'>Query</label>
+            <label htmlFor='query' className='control-label'  style={{fontSize:'20px'}}>Query :</label>
             <input
               id='query'
               name='query'
@@ -142,10 +141,11 @@ const AgentContact = () => {
               type='submit'
               value='Submit Query'
               className='btn btn-primary btn-block'
+              style={{fontSize:'20px',width:'90%',height:'80%'}}
             />
             <div className='backus'>
              
-              <Link to="/Agenthome" className="btn btn-success ml-2" style={{fontSize:'20px'}}>Back to Home</Link>
+              <Link to="/Agenthome" className="btn btn-success ml-2" style={{fontSize:'20px',width:'50%',marginLeft:'50%'}}>Back to Home</Link>
             </div>
           </div>
         </form>

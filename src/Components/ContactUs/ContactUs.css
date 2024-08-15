@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url("D:\finalProject\MajorProject\public\Images\track.jpg"); 
+    background-image: url('/public/Images/track.jpg');
     background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat;
@@ -15,7 +15,7 @@
   }
   
   .submit-form-container {
-    background: #eecbcb;
+    background: #fffcfc;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

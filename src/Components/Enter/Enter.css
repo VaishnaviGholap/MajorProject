@@ -14,9 +14,10 @@
     height: 100%;
     overflow: hidden;
     z-index: -1;
-    background: url("D:\finalProject\MajorProject\public\Images\video.gif") no-repeat center center fixed;
+    background: url('/public/Images/video.gif') no-repeat center center fixed;
     background-size: cover;
   }
+ 
   
   .content {
     position: absolute;
@@ -34,7 +35,7 @@
     color: lemonchiffon;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     
   }
   
@@ -49,9 +50,11 @@
     text-decoration: none;
     text-align: center;
     display: inline-block;
+    margin-bottom: 20%;
   }
   
   .enter-button:hover {
     background-color: darkgray;
   }
+  
   

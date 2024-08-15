@@ -9,7 +9,7 @@
   }
   
   .main {
-    background-image: url('D:\finalProject\MajorProject\public\Images\form.jpg');
+    background-image: url('/public/Images/form.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -20,7 +20,7 @@
   h2 {
     text-align: center;
     color: #333;
-    font-size: 30px;
+    font-size: 40px;
   }
   
   form {
@@ -63,6 +63,8 @@
     justify-content: space-between;
     align-items: center; 
     margin-top: 10px;
+    width: 80%;
+    height: 90%;
   }
   
   button, .btn-success {
@@ -77,6 +79,7 @@
     text-align: center;
     text-decoration: none;
     line-height: 24px; 
+
   }
   
   button:hover, .btn-success:hover {

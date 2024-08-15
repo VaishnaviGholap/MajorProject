@@ -33,15 +33,14 @@ const AgentHome = () => {
       <AgentNav/>
    
     <div className={styles.agentContainer + ' mt-4'}>
-      <div><h1 className={styles.agentTitle + ' text-center mb-4'}>YOUR PROFILE</h1></div>
       <div className="row justify-content-center">
         
           <div className="col-12 mb-4" key={agent.id}>
             <div className={styles.agentDetailsCard}>
               <img className={styles.agentDetailsImg} src='/Images/agent1.jpg' alt="Card" />
               <div className={styles.agentDetailsBody}>
-                <h4 className={styles.agentDetailsTitle}>Company: {agent.companyName}</h4>
-                <h6 className={styles.agentDetailsTitle1}>Agent Name: {agent.agentName}</h6>
+              <h4 className={styles.agentDetailsTitle1}>Agent Name: {agent.agentName}</h4>
+                <h6 className={styles.agentDetailsTitle}>Company: {agent.companyName}</h6>
                 <p className={styles.agentDetailsText}>Address: {agent.address}</p>
                 <p className={styles.agentDetailsText}>Ratings: {agent.ratings}/5</p>
                 <p className={styles.agentDetailsText}>Call: {agent.phoneNumber}</p>

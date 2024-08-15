@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import './Details.css'; // Import the CSS file for styling
+import './Details.css'; 
 import { Tracking } from '../../APICallFunction/UserFunction';
 
 const Details = () => {
@@ -14,7 +14,8 @@ const Details = () => {
     },[])
 
     const getTrack = async ()=>{
-        try {
+         try
+         {
             const res = await Tracking(trk);
             console.log(res.data);
             
@@ -26,11 +27,11 @@ const Details = () => {
 
             }
         
-        } catch (error) {
-          navigate('/customer')
-            console.log(error);
+         } catch (error) {
+           navigate('#')
+              console.log(error);
             
-        }
+         }
     }
 
     
@@ -79,3 +80,6 @@ const Details = () => {
 };
 
 export default Details
+
+
+

@@ -55,7 +55,7 @@
   }
   
   .nav-links a:hover {
-    background-color: #fef8f6; /* Deep Orange */
+    background-color: #fef8f6; 
     color: #1b1a1a;
     border-radius: 5px;
   }
@@ -92,8 +92,8 @@
   }
   
   .dropdown-content a:hover {
-    background-color: #FFC107; /* Amber */
-    color: #333; /* Dark Gray */
+    background-color: #FFC107; 
+    color: #333;
     border-radius: 5px;
   }
 
@@ -103,14 +103,14 @@
   }
 
   .logout {
-    margin-left: 15px; /* Add some space between the logout button and other elements */
+    margin-left: 15px; 
 }
 
 .logout a {
   text-decoration: none;
-  color: rgb(17, 15, 15); /* White text color */
-  background-color: rgb(251, 249, 249); /* Red background color */
-  padding: 10px 15px; /* Add padding */
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+  color: rgb(17, 15, 15);
+  background-color: rgb(251, 249, 249); 
+  padding: 10px 15px;
+  border-radius: 5px; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
 }

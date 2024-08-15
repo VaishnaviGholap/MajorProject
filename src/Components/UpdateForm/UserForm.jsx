@@ -47,7 +47,7 @@ const UserForm = () => {
   return (
     <div className='main'>
       <div className="form-container">
-        <h2>My Form</h2><br></br>
+        <h2>Update User</h2><br></br>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="id">ID:</label>
@@ -127,7 +127,7 @@ const UserForm = () => {
           </div>
           <div className="button-group">
             <button type="submit" style={{height:'40px'}}>Submit</button>
-            <a href="/customer-home" className="btn btn-success" >Back</a>
+            <a href="/getusers" className="btn btn-success" style={{marginLeft:'90%'}}>Back</a>
           </div>
         </form>
       </div>

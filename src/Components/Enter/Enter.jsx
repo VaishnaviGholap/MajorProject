@@ -10,7 +10,6 @@ const Enter = () => {
         <div className="welcome-message">
           Welcome to Our NinjaCourier Portal!
         </div>
-        
         <Link to="/role-select" className="enter-button">𝖭𝗂𝗇𝗃𝖺𝖢𝗈𝗎𝗋𝗂𝖾𝗋</Link>
       </div>
     </div>

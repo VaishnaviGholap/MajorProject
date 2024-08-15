@@ -1,10 +1,6 @@
-
-  .getOrdersContainer {
-    padding: 20px;
-}
-
 .table-responsive {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .getOrdersTable {
@@ -13,18 +9,11 @@
 }
 
 .getOrdersTable th, .getOrdersTable td {
-    border: 1px solid #ddd;
     padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
 }
 
 .getOrdersTable th {
     background-color: #f2f2f2;
-}
-
-
-@media (max-width: 768px) {
-    .getOrdersTable th, .getOrdersTable td {
-        font-size: 12px;
-        padding: 6px;
-    }
 }

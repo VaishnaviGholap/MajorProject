@@ -9,14 +9,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("D:\finalProject\MajorProject\public\Images\agent.jpg"); 
+  background-image: url('/public/Images/agent.jpg');
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat;
 }
 
 .agent-auth {
-  max-width: 400px; /* Keep original max-width */
+  max-width: 400px; 
   width: 100%;
   padding: 20px;
   border: 1px solid #ddd;
@@ -58,6 +58,8 @@
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
+  margin-left: 40px;
+  width: 80%;
 }
 
 .agent-auth button:hover {
@@ -81,6 +83,12 @@
 
 .remember-me input {
   margin-right: 10px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }
 
 

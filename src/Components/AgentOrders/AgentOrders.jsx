@@ -1,4 +1,3 @@
-// AgentOrders.jsx
 
 import React, { useEffect, useState } from 'react';
 import './AgentOrders.css';
@@ -27,17 +26,15 @@ const AgentOrders = () => {
     const getOrder = async () => {
         try {
             const res = await GetSingleOrder(agID);
-            console.log(res)
+            console.log(res);
             if (res.status === 200) {
                 setOrder(res.data);
-                res.data.length==0?setErr('Nobady place order'):
-                setErr(''); // Clear error message if successful
+                res.data.length === 0 ? setErr('Oops..... No order') : setErr('');
             } else {
-                
                 setErr('No orders found');
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
             navigate('/agent');
             setErr('Error No orders found');
         }
@@ -62,53 +59,60 @@ const AgentOrders = () => {
 
     return (
         <div>
-            <AgentNav />
+             <AgentNav />
+
+
+        <div className='agentOrdersContainer'>
+            <br></br>
+              <h2 style={{ fontSize: '40px' }}>Your Orders</h2>
             {errorMessage ? (
-                <h3>{errorMessage}</h3>
+                <h3 className='error-message'>{errorMessage}</h3>
             ) : (
-                <table className="getOrdersTable">
-                    <thead>
-                        <tr>
-                            <th>Customer ID</th>
-                            <th>Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Pickup</th>
-                            <th>Destination</th>
-                            <th>Order Date</th>
-                            <th>Delivery Date</th>
-                            <th>Tracking ID</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {orders.map(order => (
-                            <tr key={order.id}>
-                                <td><Link to={`/customersProfile/${order.customerId}`}>{order.customerId}</Link></td>
-                                <td>{order.name}</td>
-                                <td>{order.phoneNumber}</td>
-                                <td>{order.email}</td>
-                                <td>{order.pickup}</td>
-                                <td>{order.destination}</td>
-                                <td>{order.oDate}</td>
-                                <td>{order.dDate}</td>
-                                <td>{order.trackingID}</td>
-                                <td>
-                                    <Button
-                                        variant='danger'
-                                        style={{ width: '80px', height: '40px' }}
-                                        onClick={() => {
-                                            setShow(true);
-                                            setOrderId(order.id);
-                                        }}
-                                    >
-                                        Cancel
-                                    </Button>
-                                </td>
+                <div className='getOrdersTableContainer'>
+                    <table className="getOrdersTable">
+                        <thead>
+                            <tr>
+                                <th>Customer ID</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Pickup</th>
+                                <th>Destination</th>
+                                <th>Order Date</th>
+                                <th>Delivery Date</th>
+                                <th>Tracking ID</th>
+                                <th>Action</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {orders.map(order => (
+                                <tr key={order.id}>
+                                    <td><Link to={`/customersProfile/${order.customerId}`}>{order.customerId}</Link></td>
+                                    <td>{order.name}</td>
+                                    <td>{order.phoneNumber}</td>
+                                    <td>{order.email}</td>
+                                    <td>{order.pickup}</td>
+                                    <td>{order.destination}</td>
+                                    <td>{order.oDate}</td>
+                                    <td>{order.dDate}</td>
+                                    <td>{order.trackingID}</td>
+                                    <td>
+                                        <Button
+                                            variant='danger'
+                                            style={{ width: '80px', height: '40px' }}
+                                            onClick={() => {
+                                                setShow(true);
+                                                setOrderId(order.id);
+                                            }}
+                                        >
+                                            Cancel
+                                        </Button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             )}
 
             <Modal show={show} onHide={handleClose}>
@@ -134,7 +138,9 @@ const AgentOrders = () => {
                 </Modal.Footer>
             </Modal>
         </div>
+        </div>
     );
 };
 
 export default AgentOrders;
+

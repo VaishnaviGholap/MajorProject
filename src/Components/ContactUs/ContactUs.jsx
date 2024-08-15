@@ -84,7 +84,8 @@ const ContactUs = () => {
   return (
     <div className='cover'>
       <div className='submit-form-container'>
-        <h2 className='submit-form-heading' style={{fontSize:'30px'}}>Submit Your Query/Feedback</h2><br></br>
+        <h2 className='submit-form-heading' style={{fontSize:'35px'}}>Submit Your Query/Feedback</h2>
+        <hr className="track-courier-heading-line" />
         <form onSubmit={handleSubmit}>
           <div className='form-group'>
             <label htmlFor='username' className='control-label' style={{fontSize:'20px'}}>Username :</label>
@@ -123,7 +124,7 @@ const ContactUs = () => {
         className='form-control'
       >
         <option value='' disabled>Select an option</option>
-        <option value='Order'>Order</option>
+        <option value='Order'>Query</option>
         <option value='Feedback'>Feedback</option>
         <option value='General'>General</option>
       </select>
@@ -147,10 +148,10 @@ const ContactUs = () => {
               type='submit'
               value='Submit Query'
               className='btn btn-primary btn-block'
+              style={{fontSize:'20px',width:'90%',height:'80%'}}
             />
             <div className='backus'>
-              
-              <Link to="/customer-home" className="btn btn-success ml-2" style={{fontSize:'20px'}}>Back to Home</Link>
+              <Link to="/customer-home" className="btn btn-success ml-2" style={{fontSize:'20px',width:'50%',marginLeft:'50%'}}>Back to Home</Link>
             </div>
           </div>
         </form>

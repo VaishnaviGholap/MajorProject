@@ -9,7 +9,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   
   const clickHandle = () => {
-    // Remove token logic if needed
     removeToken('token');
     navigate("/customer");
   }
@@ -17,10 +16,10 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar">
-        <div className="logo">
+        <Link to ="/customer-home" className="logo">
           <img src='./Images/ninjalogo2.gif' alt="NinjaCourier Logo" />
           <span className="logo-text" style={{ fontFamily: 'cursive', color: 'black' }}>NinjaCourier</span>
-        </div>
+        </Link>
         
         <div className='nav-links'>
          
@@ -33,7 +32,7 @@ const Navbar = () => {
          
         </div>
         
-        <Button className="btn btn-primary" onClick={clickHandle}>Log Out</Button>
+        <Button className="btn" style={{backgroundColor:' rgb(175, 8, 8)'}} onClick={clickHandle}>Log Out</Button>
       </nav>
     </div>
   );

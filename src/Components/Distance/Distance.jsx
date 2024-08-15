@@ -42,7 +42,7 @@ const Distance = () => {
       const token = getToken();
       if(!token){
         console.log("123");
-        //navigate('/')
+      
         
       }
     }
@@ -121,17 +121,17 @@ const Distance = () => {
         );
         getAllAgents();
         directionsRenderer.setDirections(result);
-        setShowOrderButton(true); // Show the "Place Order" button after successful route calculation
+        setShowOrderButton(true); 
       } else {
         directionsRenderer.setDirections({ routes: [] });
         map.setCenter({ lat: 38.346, lng: -0.4907 });
         setOutput(
           "<div class='alert-danger'><i class='fas fa-exclamation-triangle'></i> Could not Retrieve</div>"
         );
-        // Save data to sessionStorage
+        
         
 
-        setShowOrderButton(false); // Hide the "Place Order" button if route calculation fails
+        setShowOrderButton(false); 
       }
     });
   };
@@ -171,7 +171,7 @@ const Distance = () => {
             </div>
 
             <div className="form-group">
-              <button type="button" className="btn btn-info btn-lg" id='abc' onClick={calcRoute}>
+              <button type="button" style={{width:'90%'}} className="btn btn-info btn-lg" id='abc' onClick={calcRoute}>
                 View Distance
               </button>
             </div>
@@ -196,8 +196,8 @@ const Distance = () => {
       <div className="row">
         
         {agentsData.map((item, index) => {
-        // Calculate the image index using modulo to reset after 5
-        const imageIndex = (index % 10) + 1; // Assuming image files are named 1.jpg, 2.jpg, ..., 5.jpg
+      
+        const imageIndex = (index % 10) + 1; 
         const inr = (distance/5000 * imageIndex).toFixed(2)
         return (
           <div className="col-md-4 mb-4" key={item.agentId}>
@@ -209,7 +209,7 @@ const Distance = () => {
                 <p className="card-text">Ratings: {item.ratings}/5</p>
                 <p className="card-text">Call: {item.phoneNumber}</p>
                
-                <Button variant='primary' style={{ marginBottom:'10px' }} onClick={()=>{
+                <Button variant='primary' style={{ marginBottom:'10px',width:'90%' }} onClick={()=>{
                   sessionStorage.setItem('inr', inr);
                   sessionStorage.setItem('agID', item.agentId);
                                             navigate(`/order/${from}/${to}`);

@@ -15,11 +15,10 @@ const AdminNav = () => {
     return (
       <div>
         <nav className="admin-navbar">
-          <div className="logo">
-            
+          <Link to='/adminhome' className="logo">
             { <img src='./Images/ninjalogo2.gif' alt="ticket" />}
             <span className="logo-text" style={{fontFamily:'cursive',color:'black'}}>NinjaCourier</span>
-          </div>
+          </Link>
            
     <div className='nav-links'>
       
@@ -32,7 +31,7 @@ const AdminNav = () => {
 
     </div>
     <div className='logout'>
-    <Button className="btn btn-primary" onClick={clickHandle}>Log Out</Button>
+    <Button className="btn btn-primary" style={{backgroundColor:'rgb(175, 8, 8)'}} onClick={clickHandle}>Log Out</Button>
     </div>
         </nav>
       </div>

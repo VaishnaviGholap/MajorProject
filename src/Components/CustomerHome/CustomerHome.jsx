@@ -39,8 +39,7 @@ const CustomerHome = () => {
       <div className="row">
         
         {agentsData.map((item, index) => {
-        // Calculate the image index using modulo to reset after 5
-        const imageIndex = (index % 10) + 1; // Assuming image files are named 1.jpg, 2.jpg, ..., 5.jpg
+        const imageIndex = (index % 10) + 1; 
         
         return (
           <div className="col-md-4 mb-4" key={item.agentId}>
@@ -51,7 +50,7 @@ const CustomerHome = () => {
                 <p className="card-text">Address: {item.address}</p>
                 <p className="card-text">Ratings: {item.ratings}/5</p>
                 <p className="card-text">Call: {item.phoneNumber}</p>
-                <Button variant='primary' style={{ marginBottom:'10px' }} onClick={()=>{
+                <Button variant='primary' style={{ marginBottom:'10px',width:'50%' }} onClick={()=>{
                                             navigate(`/agentProfile/${item.agentId}`);
                                         }}>View Profile</Button>
                 

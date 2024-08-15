@@ -52,7 +52,6 @@ const Order = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission logic
         console.log('Form data submitted:', formData);
         try {
             const res = await OrderPlace(formData);
@@ -79,7 +78,7 @@ const Order = () => {
             <br></br>
             <form onSubmit={handleSubmit} className="order-form">
                 <div className="form-group">
-                    <label htmlFor="name" style={{fontSize:'20px'}} className="control-label">Name :</label>
+                    <label htmlFor="name" style={{fontSize:'20px'}} className="control-label">Receiver Name :</label>
                     <input
                         type="text"
                         id="name"
@@ -90,7 +89,7 @@ const Order = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="email" style={{fontSize:'20px'}} className="control-label">Email :</label>
+                    <label htmlFor="email" style={{fontSize:'20px'}} className="control-label">Receiver Email :</label>
                     <input
                         type="email"
                         id="email"
@@ -101,7 +100,7 @@ const Order = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="phone" style={{fontSize:'20px'}} className="control-label">Phone :</label>
+                    <label htmlFor="phone" style={{fontSize:'20px'}} className="control-label">Receiver Phone :</label>
                     <input
                         type="text"
                         id="phone"
@@ -136,8 +135,8 @@ const Order = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <input type="submit" value="Submit" className="btn btn-primary" />
-                    <a href="/customer-home" className="btn btn-success ml-2">Back to Home</a>
+                    <input type="submit" value="Submit" className="btn btn-primary"  style={{ width: '100px', height: '40px',marginLeft:'100%'}} />
+                    <a href="/customer-home" className="btn btn-success ml-2"   style={{ width: '150px', height: '40px', display: 'inline-block', textAlign: 'center',marginLeft:'30%'}}>Back to Home</a>
                 </div>
             </form>
         </div>

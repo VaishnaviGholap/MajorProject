@@ -16,11 +16,10 @@ const AgentNav = () => {
     return (
       <div>
         <nav className="Agent-navbar">
-          <div className="logo">
-            
+          <Link to="/Agenthome" className="logo">
             { <img src='./Images/ninjalogo2.gif' alt="ticket" />}
             <span className="logo-text" style={{fontFamily:'cursive',color:'black'}}>NinjaCourier</span>
-          </div>
+          </Link>
            
     <div className='nav-links'>
       
@@ -33,7 +32,7 @@ const AgentNav = () => {
             <li><Link to="/agentabout">About Us</Link></li> 
 
     </div>
-    <Button className="btn btn-primary" onClick={clickHandle}>Log Out</Button>
+    <Button className="btn" style={{backgroundColor:'rgb(175, 8, 8)'}} onClick={clickHandle}>Log Out</Button>
         </nav>
       </div>
     );

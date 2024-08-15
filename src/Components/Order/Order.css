@@ -3,111 +3,100 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url("D:\finalProject\MajorProject\public\Images\track.jpg"); 
-    background-size: cover; 
-   background-position: center; 
-   background-repeat: no-repeat;
-   padding-top: 50px;
-  }
-
+    background: url('/public/Images/track.jpg') ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 50px;
+}
 
 .order-container {
     margin-top: 40px;
-    background-color: #f0f8ff; /* Light blue background for the form container */
+    background-color: #f0f8ff; 
     padding: 20px;
-    border-radius: 8px; /* Example border radius for the container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Example shadow for the container */
-    max-width: 600px; /* Set maximum width */
-    margin: auto; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    max-width: 600px; 
+    margin: auto;
 }
 
-/* CSS for the order form */
 .order-form {
-    width: 100%; /* Full width within the container */
+    width: 100%; 
 }
 
-/* CSS for form labels */
 .order-container .control-label {
     font-weight: bold;
     margin-bottom: 5px;
     display: block;
-    color: #333; /* Darker grey color for the labels */
+    color: #333; 
 }
 
-/* CSS for form inputs */
 .order-container .form-control {
-    border: 1px solid #007bff; /* Blue border color */
-    border-radius: 4px; /* Example border radius */
-    padding: 10px; /* Example padding */
-    margin-bottom: 15px; /* Example margin bottom */
-    background-color: #e9f7ff; /* Light blue background for inputs */
+    border: 1px solid #007bff; 
+    border-radius: 4px; 
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #e9f7ff; 
 }
 
-/* CSS for form submit button */
 .order-container .btn-primary {
-    background-color: #007bff; /* Example primary button color */
-    border-color: #007bff; /* Example primary button border color */
-    color: #fff; /* Example primary button text color */
-    padding: 10px 20px; /* Example padding */
-    border-radius: 4px; /* Example border radius */
-    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effects */
+    background-color: #007bff; 
+    border-color: #007bff; 
+    color: #fff; 
+    padding: 10px 20px; 
+    border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s; 
 }
 
 .order-container .btn-primary:hover {
-    background-color: #0056b3; /* Example primary button hover color */
-    border-color: #0056b3; /* Example primary button hover border color */
-    color: #fff; /* Example primary button hover text color */
+    background-color: #0056b3; 
+    border-color: #0056b3; 
+    color: #fff; 
 }
 
-/* CSS for back to home link button */
 .order-container .btn-success {
-    background-color: #28a745; /* Example success button color */
-    border-color: #28a745; /* Example success button border color */
-    color: #fff; /* Example success button text color */
-    padding: 10px 20px; /* Example padding */
-    border-radius: 4px; /* Example border radius */
-    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effects */
-    margin-left: 10px; /* Added margin for spacing between buttons */
+    background-color: #28a745; 
+    border-color: #28a745; 
+    color: #fff; 
+    padding: 10px 20px; 
+    border-radius: 4px; 
+    transition: background-color 0.3s, border-color 0.3s; 
+    margin-left: 10px;
 }
 
 .order-container .btn-success:hover {
-    background-color: #218838; /* Example success button hover color */
-    border-color: #1e7e34; /* Example success button hover border color */
-    color: #fff; /* Example success button hover text color */
+    background-color: #218838; 
+    border-color: #1e7e34; 
+    color: #fff; 
 }
 
-/* CSS for error messages */
 .order-container .text-danger {
-    color: #dc3545; /* Example error text color */
-    font-size: 0.875em; /* Example font size for error messages */
+    color: #dc3545; 
+    font-size: 0.875em; 
 }
 
-/* Centered text */
 .order-container .text-center {
     text-align: center;
 }
 
-/* Margin-top for rows */
 .order-container .mt-5 {
     margin-top: 3rem;
 }
 
-/* Justify content center for rows */
 .order-container .justify-content-center {
     justify-content: center;
 }
 
 .control-label {
-    flex: 0 0 150px; /* Fixed width for labels */
-    margin-right:  1px; /* Space between label and input */
-  
-  }
+    flex: 0 0 150px; 
+    margin-right: 1px; 
+}
 
-  .form-input {
-    flex: 1; /* Make the input field take the remaining space */
-  }
+.form-input {
+    flex: 1; 
+}
 
-  .back-icon {
+.back-icon {
     position: fixed;
     bottom: 20px;
     left: 20px;
@@ -115,9 +104,84 @@
     color: white;
     cursor: pointer;
     transition: transform 0.3s;
-  }
-  .back-icon:hover {
-    transform: scale(1.1);
-  }
+}
 
+.back-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive styles for tablets and below */
+@media (max-width: 992px) {
+    .order-container {
+        padding: 15px;
+        margin: 20px;
+    }
+
+    .order-form .form-group {
+        margin-bottom: 12px;
+    }
+
+    .order-container .btn-primary,
+    .order-container .btn-success {
+        width: 100%; 
+        margin: 10px 0; 
+    }
+
+    .back-icon {
+        font-size: 1.5rem; 
+        bottom: 15px;
+        left: 15px;
+    }
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+    .order-container {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .order-form .form-group {
+        margin-bottom: 10px;
+    }
+
+    .order-container .btn-primary,
+    .order-container .btn-success {
+        padding: 8px 16px; 
+        font-size: 0.875rem; 
+    }
+
+    .back-icon {
+        font-size: 1.2rem;
+        bottom: 10px;
+        left: 10px;
+    }
+}
+
+/* Responsive styles for very small devices */
+@media (max-width: 576px) {
+    .order-container {
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .order-container .btn-primary,
+    .order-container .btn-success {
+        padding: 6px 12px; 
+        font-size: 0.75rem; 
+    }
+
+    .back-icon {
+        font-size: 1rem; 
+        bottom: 5px;
+        left: 5px;
+    }
+}
+
+@media (max-width: 992px) {
+    .submit-btn {
+        width: 100%; 
+        margin-left: 0;
+    }
+}
 

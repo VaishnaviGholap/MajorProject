@@ -39,7 +39,7 @@ const TrackCourierForm = () => {
                 <hr className="track-courier-heading-line" />
                 <form onSubmit={handleSubmit}>
                     <div className="track-courier-form-group">
-                        <label htmlFor="trk" className="track-courier-control-label" style={{fontSize:'25px'}}>Tracking Number :</label>
+                        <label htmlFor="trk" className="track-courier-control-label" style={{fontSize:'25px'}}>Tracking Number&nbsp;<span style={{ color: 'red' }}>*</span></label>
                         <input 
                             type="text"
                             id="trk"

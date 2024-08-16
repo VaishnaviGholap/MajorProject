@@ -37,6 +37,8 @@ import UserOtp from './Components/OTP/UserOTP';
 import ForgetAgent from './Components/ForgetPassword/ForgetAgent';
 import AgentOtp from './Components/OTP/AgentOtp';
 import Payment from './Components/Payment/Payment';
+import TrackHome from './Components/TrackHome/TrackHome';
+import Password from './Components/Password/Password';
 
 
 
@@ -79,6 +81,8 @@ function App() {
       <Route path="/forgetAgent" element={<ForgetAgent />} />
       <Route path="/otpAgent" element={<AgentOtp />} />
       <Route path="/payment" element={<Payment />} />
+      <Route path="/track-home" element={<TrackHome />} />
+      <Route path="/password" element={<Password/>} />
 
 
 

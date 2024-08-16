@@ -28,7 +28,7 @@ const Details = () => {
             }
         
          } catch (error) {
-           navigate('#')
+           navigate('/customer')
               console.log(error);
             
          }

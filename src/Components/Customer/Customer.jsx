@@ -132,7 +132,7 @@ function Customer() {
         <form onSubmit={handleSubmit}>
           {!isLogin && (
             <>
-              <label>Name:</label>
+              <label>Name&nbsp;<span style={{ color: 'red' }}>*</span></label>
               <input
                 type="text"
                 name="name"
@@ -142,7 +142,7 @@ function Customer() {
               />
               {formErrors.name && <div className="error">{formErrors.name}</div>}
 
-              <label>Email:</label>
+              <label>Email&nbsp;<span style={{ color: 'red' }}>*</span></label>
               <input
                 type="email"
                 name="email"
@@ -152,7 +152,7 @@ function Customer() {
               />
               {formErrors.email && <div className="error">{formErrors.email}</div>}
 
-              <label>Phone:</label>
+              <label>Phone&nbsp;<span style={{ color: 'red' }}>*</span></label>
               <input
                 type="tel"
                 name="phoneNumber"
@@ -162,7 +162,7 @@ function Customer() {
               />
               {formErrors.phoneNumber && <div className="error">{formErrors.phoneNumber}</div>}
 
-              <label>Address:</label>
+              <label>Address&nbsp;<span style={{ color: 'red' }}>*</span></label>
               <input
                 type="text"
                 name="address"
@@ -173,7 +173,7 @@ function Customer() {
               {formErrors.address && <div className="error">{formErrors.address}</div>}
             </>
           )}
-          <label>Username:</label>
+          <label>Username&nbsp;<span style={{ color: 'red' }}>*</span></label>
           <input
             type="text"
             name="username"
@@ -183,7 +183,7 @@ function Customer() {
           />
           {formErrors.username && <div className="error">{formErrors.username}</div>}
 
-          <label>Password:</label>
+          <label>Password&nbsp;<span style={{ color: 'red' }}>*</span></label>
           <input
             type="password"
             name="password"

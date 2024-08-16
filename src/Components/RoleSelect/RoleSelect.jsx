@@ -21,12 +21,12 @@ function RoleSelect() {
           <Link to="/admin">Admin</Link>
         </div>
         <div className="navigation-icons">
-          <IoLocationSharp 
+          {/* <IoLocationSharp 
             style={{ color: 'white', fontSize: '50px', marginRight: '1060px',marginTop:'100px'}} 
             className="track-icon" 
-            onClick={() => navigate('/track-order')} 
+            onClick={() => navigate('/track-home')} 
             title="Track Order"
-          />
+          /> */}
           <IoArrowBackCircle 
             style={{ color: 'white', fontSize: '50px' }} 
             className="back-icon" 

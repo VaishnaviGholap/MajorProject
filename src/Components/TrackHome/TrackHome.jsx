@@ -1,17 +1,15 @@
 
 import React, { useEffect, useState } from 'react';
-import './TrackOrder.css';
+import './TrackHome.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { getToken } from '../../APICallFunction/UserFunction';
 
-const TrackCourierForm = () => {
+const TrackHome = () => {
     const [trk, setTrk] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    useEffect(() => {
-        tokenCheck();
-    }, []);
+   
 
     const tokenCheck = () => {
         const token = getToken();
@@ -60,5 +58,5 @@ const TrackCourierForm = () => {
     );
 };
 
-export default TrackCourierForm;
+export default TrackHome;
 

@@ -1,38 +1,34 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AgentContact.css';
+import { getToken, PostFeed } from '../../APICallFunction/UserFunction';
 import { Link, useNavigate } from 'react-router-dom';
-import { getToken } from '../../APICallFunction/UserFunction';
 
 const AgentContact = () => {
+  const navigate = useNavigate(); 
+  useEffect(() => {
+    tokenCheck();
+  }, []);
 
- 
-    const navigate = useNavigate();
-    useEffect(()=>{
-      tokenCheck();
-    },[])
-  
-    const tokenCheck = ()=>{
-      const token = getToken();
-      if(!token)
-     {
-      navigate('/agent');
-     }
+  const tokenCheck = () => {
+    const token = getToken();
+    if (!token) {
+      navigate('/customer');
     }
+  };
+
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    phone: '',
+    category: '',
     query: ''
   });
 
   const [errors, setErrors] = useState({
     username: '',
     email: '',
-    phone: '',
+    category: '',
     query: ''
   });
-
-  const form = useRef();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,6 +36,35 @@ const AgentContact = () => {
       ...formData,
       [name]: value
     });
+
+    // Validate input fields
+    validateField(name, value);
+  };
+
+  const validateField = (name, value) => {
+    let newErrors = { ...errors };
+
+    if (name === 'username') {
+      newErrors.username = value ? '' : 'Username is required';
+    }
+    if (name === 'email') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!value) {
+        newErrors.email = 'Email is required';
+      } else if (!emailRegex.test(value) || !value.endsWith('gmail.com')) {
+        newErrors.email = 'Email must be a valid Gmail address';
+      } else {
+        newErrors.email = '';
+      }
+    }
+    if (name === 'category') {
+      newErrors.category = value ? '' : 'Category is required';
+    }
+    if (name === 'query') {
+      newErrors.query = value ? '' : 'Query is required';
+    }
+
+    setErrors(newErrors);
   };
 
   const validateForm = () => {
@@ -53,9 +78,15 @@ const AgentContact = () => {
     if (!formData.email) {
       newErrors.email = 'Email is required';
       valid = false;
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email) || !formData.email.endsWith('gmail.com')) {
+        newErrors.email = 'Email must be a valid Gmail address';
+        valid = false;
+      }
     }
-    if (!formData.phone) {
-      newErrors.phone = 'Phone is required';
+    if (!formData.category) {
+      newErrors.category = 'Category is required';
       valid = false;
     }
     if (!formData.query) {
@@ -67,31 +98,31 @@ const AgentContact = () => {
     return valid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (validateForm()) {
-     
-      console.log('Form submitted successfully with data:', formData);
-      alert('Form submitted successfully!');
-      setFormData({
-        username: '',
-        email: '',
-        phone: '',
-        query: ''
-      });
-      setErrors({});
-      navigate('/agenthome')
+      console.log('Form submitted successfully', formData);
+      try {
+        const res = await PostFeed(formData);
+        console.log(res.data);
+        if (res.status === 200) {
+          navigate('/customer-home');
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
   return (
     <div className='cover'>
       <div className='submit-form-container'>
-        <h3 className='submit-form-heading'  style={{fontSize:'35px'}}>Submit Your Query/Feedback</h3>
-        <form ref={form} onSubmit={handleSubmit}>
+        <h2 className='submit-form-heading' style={{fontSize: '35px'}}>Submit Your Query/Feedback</h2>
+        <hr className="track-courier-heading-line" />
+        <form onSubmit={handleSubmit}>
           <div className='form-group'>
-            <label htmlFor='username' className='control-label'  style={{fontSize:'20px'}}>Username :</label>
+            <label htmlFor='username' className='control-label' style={{fontSize: '20px'}}>Username&nbsp; <span style={{ color: 'red' }}>*</span></label>
             <input
               id='username'
               name='username'
@@ -102,7 +133,7 @@ const AgentContact = () => {
             <span className='text-danger'>{errors.username}</span>
           </div>
           <div className='form-group'>
-            <label htmlFor='email' className='control-label'  style={{fontSize:'20px'}}>Email :</label>
+            <label htmlFor='email' className='control-label' style={{fontSize: '20px'}}>Email&nbsp; <span style={{ color: 'red' }}>*</span></label>
             <input
               id='email'
               name='email'
@@ -114,18 +145,23 @@ const AgentContact = () => {
             <span className='text-danger'>{errors.email}</span>
           </div>
           <div className='form-group'>
-            <label htmlFor='phone' className='control-label'  style={{fontSize:'20px'}}>Phone :</label>
-            <input
-              id='phone'
-              name='phone'
-              value={formData.phone}
+            <label htmlFor='category' className='control-label' style={{fontSize: '20px'}}>Category&nbsp; <span style={{ color: 'red' }}>*</span></label>
+            <select
+              id='category'
+              name='category'
+              value={formData.category}
               onChange={handleChange}
               className='form-control'
-            />
-            <span className='text-danger'>{errors.phone}</span>
+            >
+              <option value='' disabled>Select an option</option>
+              <option value='Order'>Query</option>
+              <option value='Feedback'>Feedback</option>
+              <option value='General'>General</option>
+            </select>
+            <span className='text-danger'>{errors.category}</span>
           </div>
           <div className='form-group'>
-            <label htmlFor='query' className='control-label'  style={{fontSize:'20px'}}>Query :</label>
+            <label htmlFor='query' className='control-label' style={{fontSize: '20px'}}>Query&nbsp;  <span style={{ color: 'red' }}>*</span></label>
             <input
               id='query'
               name='query'
@@ -141,11 +177,10 @@ const AgentContact = () => {
               type='submit'
               value='Submit Query'
               className='btn btn-primary btn-block'
-              style={{fontSize:'20px',width:'90%',height:'80%'}}
+              style={{fontSize: '20px', width: '90%', height: '80%'}}
             />
             <div className='backus'>
-             
-              <Link to="/Agenthome" className="btn btn-success ml-2" style={{fontSize:'20px',width:'50%',marginLeft:'50%'}}>Back to Home</Link>
+              <Link to="/customer-home" className="btn btn-success ml-2" style={{fontSize: '20px', width: '50%', marginLeft: '50%'}}>Back to Home</Link>
             </div>
           </div>
         </form>
@@ -154,4 +189,4 @@ const AgentContact = () => {
   );
 };
 
-export default AgentContact;
+export default AgentContact ;

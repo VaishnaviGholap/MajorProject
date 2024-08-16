@@ -24,6 +24,7 @@ function ForgetUser() {
   
   const redirect =()=>{
     navigate('/otpUser')
+  
    }
   const handleSubmit = async (e) => {
    
@@ -67,10 +68,10 @@ function ForgetUser() {
     <div className='containerC'>
       <div className="customer-auth">
         <h2>Forget Password</h2>
-        <h4>Enter Your Username</h4>
+       <br></br>
         <form onSubmit={handleSubmit}>
           
-          <label>Username:</label>
+          <label><h4 style={{color:"black"}}>Enter your Username:</h4></label>
           <input type="text" name="username" onChange={handleChange} required />
           
           <button type="submit">Submit</button>

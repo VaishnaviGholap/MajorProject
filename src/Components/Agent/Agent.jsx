@@ -128,7 +128,7 @@ function Agent() {
         <form onSubmit={handleSubmit}>
           {!isLogin && (
             <>
-              <label>Company Name:</label>
+              <label>Company Name&nbsp;<span style={{ color: 'red' }}>*</span></label>
               <input
                 type="text"
                 name="companyName"
@@ -138,7 +138,7 @@ function Agent() {
               />
               {formErrors.companyName && <div className="error">{formErrors.companyName}</div>}
 
-              <label>Agent Name:</label>
+              <label>Agent Name&nbsp;<span style={{ color: 'red' }}>*</span></label>
               <input
                 type="text"
                 name="agentName"
@@ -148,7 +148,7 @@ function Agent() {
               />
               {formErrors.agentName && <div className="error">{formErrors.agentName}</div>}
 
-              <label>Phone:</label>
+              <label>Phone&nbsp;<span style={{ color: 'red' }}>*</span></label>
               <input
                 type="text"
                 name="phoneNumber"
@@ -158,7 +158,7 @@ function Agent() {
               />
               {formErrors.phoneNumber && <div className="error">{formErrors.phoneNumber}</div>}
 
-              <label>Email:</label>
+              <label>Email&nbsp;<span style={{ color: 'red' }}>*</span></label>
               <input
                 type="text"
                 name="email"
@@ -168,7 +168,7 @@ function Agent() {
               />
               {formErrors.email && <div className="error">{formErrors.email}</div>}
 
-              <label>Address:</label>
+              <label>Address&nbsp;<span style={{ color: 'red' }}>*</span></label>
               <input
                 type="text"
                 name="address"
@@ -179,7 +179,7 @@ function Agent() {
               {formErrors.address && <div className="error">{formErrors.address}</div>}
             </>
           )}
-          <label>Username:</label>
+          <label>Username&nbsp;<span style={{ color: 'red' }}>*</span></label>
           <input
             type="text"
             name="username"
@@ -189,7 +189,7 @@ function Agent() {
           />
           {formErrors.username && <div className="error">{formErrors.username}</div>}
 
-          <label>Password:</label>
+          <label>Password&nbsp;<span style={{ color: 'red' }}>*</span></label>
           <input
             type="password"
             name="password"

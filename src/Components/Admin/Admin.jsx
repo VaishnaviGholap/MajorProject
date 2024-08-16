@@ -51,9 +51,9 @@ function Admin() {
       <div className="admin-auth">
         <h2>Admin Login</h2>
         <form onSubmit={handleSubmit}>
-          <label>Username:</label>
+          <label>Username&nbsp;<span style={{ color: 'red' }}>*</span></label>
           <input type="text" name="username" onChange={handleChange} required />
-          <label>Password:</label>
+          <label>Password&nbsp;<span style={{ color: 'red' }}>*</span></label>
           <input type="password" name="password" onChange={handleChange} required />
           
           {

@@ -25,7 +25,7 @@ const CustomerHome = () => {
     setAgents(res.data);
     } catch (error) {
       console.log("error h bhai "+error);
-      navigate('/cutomer');
+      navigate('/customer');
       
     }
   }
